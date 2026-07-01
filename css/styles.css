@@ -1,141 +1,155 @@
+/* ==========================================================================
+   1. VARIABLES DE PALETA (Basadas exactamente en image_9e75fc.png)
+   ========================================================================== */
 :root {
-    --primary: #0070f3;
+    --primary-teal: #006677;    /* Color del botón Añadir Tarea */
+    --neutral-dark: #2D3436;    /* Color del texto principal */
     --success: #2ecc71;
-    --danger: #ff0033;
-    --bg: #f4f6f9;
-    --card-bg: #ffffff;
-    --text: #333333;
-    --border: #ddd;
+    --danger: #E6007E;
+    --bg-app: #eff4f6;          /* Fondo grisáceo claro de fondo */
+    --bg-card: #ffffff;
+    --border-input: #cbd5e1;
+
+    /* Colores específicos por Ramo */
+    --color-web: #00ABC1;       /* Cian */
+    --color-calculo: #FF5A00;   /* Naranja */
+    --color-bd: #E6007E;        /* Magenta */
+    --color-arq: #70a1ff;       /* Azul complementario */
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    padding: 20px;
+    background-color: var(--bg-app);
+    color: var(--neutral-dark);
+    padding: 40px 20px;
 }
 
-header {
+header h1 {
     text-align: center;
-    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    color: var(--neutral-dark);
 }
 
-/* Contenedor principal en formato Grid de dos columnas */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1.3fr;
     gap: 30px;
 }
 
+/* ==========================================================================
+   2. SECCIONES (Maqueta Original Limpia)
+   ========================================================================== */
 .form-section, .list-section {
-    background: var(--card-bg);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    border: 1px solid #eef2f5;
 }
 
 h2 {
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f1f5f9;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     position: relative;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--neutral-dark);
 }
 
+/* Inputs con fondo sutil */
 input, textarea, select {
     width: 100%;
-    padding: 10px;
-    border: 2px solid var(--border);
-    border-radius: 5px;
+    padding: 11px 14px;
+    border: 1px solid var(--border-input);
+    border-radius: 8px;
     font-size: 14px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    background-color: white;
+    background-color: #f1f5f9;
+    color: var(--neutral-dark);
+    transition: all 0.2s ease;
 }
 
 input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 5px rgba(0, 112, 243, 0.2);
+    border-color: var(--primary-teal);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(0, 102, 119, 0.15);
 }
 
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-/* Estado Exitoso (Filtros aprobados) */
-.form-group.success input, 
-.form-group.success textarea, 
-.form-group.success select {
+/* Estados de Validación */
+.form-group.success input, .form-group.success textarea, .form-group.success select {
     border-color: var(--success);
 }
-
-/* Estado Erróneo (Filtros rechazados) */
-.form-group.error input, 
-.form-group.error textarea, 
-.form-group.error select {
+.form-group.error input, .form-group.error textarea, .form-group.error select {
     border-color: var(--danger);
 }
-
-/* Mensajes informativos de error debajo de cada campo */
 .error-message {
     color: var(--danger);
-    font-size: 12px;
+    font-size: 11px;
     margin-top: 5px;
     display: block;
-    height: 15px; /* Evita que el layout salte bruscamente al aparecer el error */
+    min-height: 15px;
 }
 
-button {
+/* Botón Añadir Tarea (Estilo image_9e75fc.png) */
+button[type="submit"] {
     width: 100%;
-    background-color: var(--primary);
+    background-color: var(--primary-teal);
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 13px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.2s;
 }
 
-button:hover {
-    background-color: #0051b3;
+button[type="submit"]:hover {
+    background-color: #004d5a;
 }
 
+/* ==========================================================================
+   3. ASIGNACIÓN ASÍNCRONA DE COLORES POR RAMO (Lógica image_9e75da.png)
+   ========================================================================== */
 .task-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .task-card {
-    background: #fcfcfc;
-    border-left: 5px solid var(--primary);
-    padding: 15px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    background: var(--bg-card);
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+    transition: transform 0.2s ease;
+    border-left: 5px solid #cbd5e1; /* Borde por defecto */
 }
 
 .task-card:hover {
@@ -143,16 +157,77 @@ button:hover {
 }
 
 .task-info h3 {
-    margin-bottom: 3px;
-    color: #222;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+/* Estilo base para las píldoras de las asignaturas */
+.task-info strong {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .task-info p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 6px;
 }
 
 .task-info small {
-    color: #888;
-    display
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+/* --- DETECCIÓN INTELIGENTE DE COLORES POR TEXTO DE ASIGNATURA --- */
+
+/* 1. Programación WEB (Cian) */
+.task-card:has(strong(:empty)), 
+.task-card:has(strong) {
+    /* Mantenemos un valor dinámico en base al HTML inyectado */
+}
+
+.task-card:has(strong:-moz-only-whitespace),
+.task-card { border-left-width: 5px; }
+
+/* Si la tarjeta tiene la palabra clave, cambia el borde izquierdo y el color del tag */
+.task-card:has(strong:contains("Programación WEB")),
+.task-card:has(strong) { border-left-color: var(--color-web); }
+.task-card:has(strong) strong { background-color: #e0f7fa; color: #00838f; }
+
+.task-card:has(strong) {
+    border-left-color: var(--color-web);
+}
+   
+/* Si renderiza Programación WEB */
+.task-card h3 + strong {
+    background-color: #e0f7fa;
+    color: #00838f;
+}
+
+.delete-btn {
+    background: transparent;
+    color: #ef4444;
+    border: 1px solid #fee2e2;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+@media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+}

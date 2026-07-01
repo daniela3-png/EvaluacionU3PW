@@ -69,10 +69,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        tasks.forEach(task => {
+            tasks.forEach(task => {
             const card = document.createElement('div');
             card.className = 'task-card';
             card.setAttribute('data-id', task.id);
+
+            if (task.subject === 'Programación WEB') {
+                card.style.borderLeftColor = '#00ABC1';
+            } else if (task.subject === 'Cálculo Integral') {
+                card.style.borderLeftColor = '#FF5A00';
+            } else if (task.subject === 'Bases de Datos') {
+                card.style.borderLeftColor = '#E6007E';
+            } else {
+                card.style.borderLeftColor = '#70a1ff'; 
+            }
 
             const infoDiv = document.createElement('div');
             infoDiv.className = 'task-info';
@@ -80,12 +90,37 @@ document.addEventListener('DOMContentLoaded', () => {
             const titleNode = document.createElement('h3');
             titleNode.textContent = task.title;
 
-            // NUEVO: Mostrar la asignatura en la tarjeta con un estilo destacado
-            const subjectNode = document.createElement('p');
-            subjectNode.innerHTML = `<strong>${task.subject}</strong>`;
-            subjectNode.style.color = 'var(--primary)';
-            subjectNode.style.fontSize = '13px';
-            subjectNode.style.marginBottom = '4px';
+            const subjectNode = document.createElement('strong');
+            subjectNode.textContent = task.subject;
+            
+            if (task.subject === 'Programación WEB') {
+                card.style.borderLeftColor = '#00ABC1';
+            } else if (task.subject === 'Diseño de Bases de Datos') {
+                card.style.borderLeftColor = '#E6007E';
+            } else if (task.subject === 'Sistemas Operativos GNU/ Linux') {
+                card.style.borderLeftColor = '#FF5A00';
+            } else if (task.subject === 'Programación.NET') {
+                card.style.borderLeftColor = '#70a1ff';
+            } else {
+                card.style.borderLeftColor = '#cbd5e1';
+            }
+
+            if (task.subject === 'Programación WEB') {
+                subjectNode.style.backgroundColor = '#E0F7FA';
+                subjectNode.style.color = '#00838F';
+            } else if (task.subject === 'Diseño de Bases de Datos') {
+                subjectNode.style.backgroundColor = '#FCE4EC';
+                subjectNode.style.color = '#C2185B';
+            } else if (task.subject === 'Sistemas Operativos GNU/ Linux') {
+                subjectNode.style.backgroundColor = '#FFF3E0';
+                subjectNode.style.color = '#E65100';
+            } else if (task.subject === 'Programación.NET') {
+                subjectNode.style.backgroundColor = '#E8EAF6';
+                subjectNode.style.color = '#3F51B5';
+            } else {
+                subjectNode.style.backgroundColor = '#f1f5f9';
+                subjectNode.style.color = '#64748b';
+            }
 
             const descNode = document.createElement('p');
             descNode.textContent = task.description;
@@ -93,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const dateNode = document.createElement('small');
             dateNode.textContent = `Entrega: ${task.date}`;
 
-            // Insertamos el nodo de la asignatura en la interfaz
             infoDiv.append(titleNode, subjectNode, descNode, dateNode);
 
             const deleteBtn = document.createElement('button');
