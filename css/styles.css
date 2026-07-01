@@ -124,9 +124,6 @@ button[type="submit"]:hover {
     background-color: #004d5a;
 }
 
-/* ==========================================================================
-   3. ASIGNACIÓN ASÍNCRONA DE COLORES POR RAMO (Lógica image_9e75da.png)
-   ========================================================================== */
 .task-grid {
     display: flex;
     flex-direction: column;
@@ -178,18 +175,13 @@ button[type="submit"]:hover {
     color: #94a3b8;
 }
 
-/* --- DETECCIÓN INTELIGENTE DE COLORES POR TEXTO DE ASIGNATURA --- */
-
-/* 1. Programación WEB (Cian) */
-.task-card:has(strong(:empty)), 
+.task-card:has(strong(:empty)),
 .task-card:has(strong) {
-    /* Mantenemos un valor dinámico en base al HTML inyectado */
 }
 
 .task-card:has(strong:-moz-only-whitespace),
 .task-card { border-left-width: 5px; }
 
-/* Si la tarjeta tiene la palabra clave, cambia el borde izquierdo y el color del tag */
 .task-card:has(strong:contains("Programación WEB")),
 .task-card:has(strong) { border-left-color: var(--color-web); }
 .task-card:has(strong) strong { background-color: #e0f7fa; color: #00838f; }
